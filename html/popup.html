@@ -1,0 +1,129 @@
+<html>
+<head>
+    <style>
+        @font-face {
+            font-family: poppins;
+            src: url(../poppins.ttf);
+        }
+
+        body {
+            width: 250px;
+            background: rgb(140, 147, 187);
+            margin: 0;
+            padding: 0;
+            font-family: poppins;
+        }
+
+        p {
+            margin: 3px;
+        }
+
+        #flex-parent {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .coloured-box {
+            width: 100%;
+            background: linear-gradient(135deg, rgb(65, 14, 133), rgb(12, 51, 177));
+        }
+
+        .coloured-box.down {
+            --mask:
+                radial-gradient(50.39px at 50% calc(100% - 68.75px),#000 99%,#0000 101%) calc(50% - 50px) 0/100px 100%,
+                radial-gradient(50.39px at 50% calc(100% + 43.75px),#0000 99%,#000 101%) 50% calc(100% - 25px)/100px 100% repeat-x;
+            -webkit-mask: var(--mask);
+            mask: var(--mask);
+        }
+
+        .coloured-box.up {
+            --mask:
+                radial-gradient(50.39px at 50% 68.75px,#000 99%,#0000 101%) calc(50% - 50px) 0/100px 100%,
+                radial-gradient(50.39px at 50% -43.75px,#0000 99%,#000 101%) 50% 25px/100px 100% repeat-x;
+            -webkit-mask: var(--mask);
+            mask: var(--mask);
+        }
+
+        #stats {
+            padding: 0 10px;
+            text-align: center;
+        }
+
+        #stats-header {
+            color: rgb(46, 46, 46);
+            font-size: 20px;
+            z-index: 1;
+            font-weight: 1500;
+        }
+
+        #stats-info-container {
+            text-align: center;
+            padding: 13px 0;
+            margin: 10px;
+            background: linear-gradient(135deg, rgb(221, 40, 40), rgb(177, 52, 69));
+            border-radius: 10px;
+            box-shadow: rgb(134, 140, 173) 0 0 3px 3px;
+            z-index: 0;
+            color: white;
+        }
+
+        .filter {
+            visibility: visible;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 20px;
+            font-family: poppins;
+            color:rgb(143, 44, 19);
+        }
+
+        #download-button {
+            position: absolute;
+            top: 53px;
+            left: 10px;
+            color: grey;
+            cursor: pointer;
+        }
+
+        #delete-button {
+            position: absolute;
+            top: 53px;
+            right: 15px;
+            color: grey;
+            cursor: pointer;
+        }
+    </style>
+    <script type="module" src="../js/popup.js"></script>
+  </head>
+<body>
+    <div id="flex-parent">
+        <div class="coloured-box down">
+            <img src="../images/logo_text.png" style="height: 60px; padding: 20px 65px 50px 65px;">
+        </div>
+        <div id="stats">
+            <span id="stats-header">
+                <button style="background-color: transparent; border: none; padding: 0;">
+                    <span class="filter" id="stats-time">
+                        This week
+                    </span>
+                </button>
+                <span>'s </span>
+                <button style="background-color: transparent; border: none; padding: 0;">
+                    <span class="filter" id="stats-type">
+                        song
+                    </span>
+                </button>
+            </span>
+            <div id="stats-info-container">
+                Unavailable
+            </div>
+        </div>
+
+        <div style="height: 70px;">
+            <div class="coloured-box up" style="position: fixed; bottom: 0; height: 80px; width: 100%; text-align: right;">
+                <a id="download-button" tabindex="0">Download raw data</a>
+                <a id="delete-button" tabindex="0">Delete data</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
